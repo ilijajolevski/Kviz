@@ -2,6 +2,10 @@ package mk.edu.fikt.pmp.kviz;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+
+import android.view.View;
+
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -9,14 +13,68 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
     int globTochno;
+    int globKliknato;
+    int poeni;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
+        poeni=0;
+        TextView txtviewpoeni = (TextView) findViewById(R.id.txtPoeni);
+        txtviewpoeni.setText(String.valueOf(poeni));
+
         PostaviZadaca();
+        
+
+        final Button button = (Button) findViewById(R.id.btn1);
+        button.setOnClickListener(lisenerot);
+
+
+        final Button button2 = (Button) findViewById(R.id.btn2);
+        button2.setOnClickListener(lisenerot);
+
+        final Button button3 = (Button) findViewById(R.id.btn3);
+        button3.setOnClickListener(lisenerot);
+
     }
 
+
+
+//    protected void proveri(View view) {
+//        Log.d("ilija","kliknav na kopce");
+//    }
+
+    View.OnClickListener lisenerot = new View.OnClickListener() {
+        public void onClick(View v) {
+            // Perform action on click
+            Log.d("ilija","kliknav na kopce");
+
+            Log.d("ilija","test"+String.valueOf(v.getId()));
+
+            TextView txtviewpoeni = (TextView) findViewById(R.id.txtPoeni);
+
+
+            if((globTochno==1&&R.id.btn1==v.getId())||(globTochno==2&&R.id.btn2==v.getId())||(globTochno==3&&R.id.btn3==v.getId())){
+                Log.d("ilija","TOCHNO!");
+                poeni++;
+                txtviewpoeni.setText(String.valueOf(poeni));
+            }
+            else {
+                Log.d("ilija","NETOCHNO!");
+                poeni--;
+                txtviewpoeni.setText(String.valueOf(poeni));
+            }
+
+            PostaviZadaca();
+
+        }
+    };
 
 
 
@@ -66,8 +124,10 @@ public class MainActivity extends AppCompatActivity {
         Button btn3 = (Button) findViewById(R.id.btn3);
 
         Low = 1;
-        High = 3;
+        High = 4;
         pozicijatocno = r.nextInt(High-Low) + Low;
+
+        Log.d("ilija","poz tochno:" + String.valueOf(pozicijatocno));
 
         if(pozicijatocno==1)
         {

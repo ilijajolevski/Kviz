@@ -63,7 +63,8 @@
         android:layout_below="@+id/br1"
         android:layout_toStartOf="@+id/br2"
         android:layout_marginTop="83dp"
-        android:id="@+id/btn1" />
+        android:id="@+id/btn1"
+        android:onClick="test1" />
 
     <Button
         android:text="aaa"
@@ -81,5 +82,15 @@
         android:layout_alignBaseline="@+id/btn1"
         android:layout_alignBottom="@+id/btn1"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtPoeni"
+        android:textSize="36sp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="92dp" />
 
 </RelativeLayout>
